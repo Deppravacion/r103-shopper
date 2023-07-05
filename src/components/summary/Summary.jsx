@@ -44,30 +44,18 @@ export const Summary = (props) => {
           <span>total</span>
         </div>
 
-        {Object.keys(cartItems).map((item, index) => {
+        {Object.keys(cartItems).map((item ) => (     
           (cartItems[item].quantity > 0 ) 
             ?
-            <div className="summaryItems" key={index}>
-              <div><img src={item.image}/></div>
-              <div>{item.name}</div>
-              <div>{item.quantity}</div>
-              <div>{item.total}</div>
+            <div className="summaryItems" key={item.id}>
+              <div><img src={cartItems[item].image}/></div>
+              <div>{cartItems[item].name}</div>
+              <div>{cartItems[item].quantity}</div>
+              <div>{cartItems[item].total}</div>
             </div>
             : null
-        })}
-        {/* { bricks.quantity > 0 || mortar.quantity > 0 
-          ? Object.values(cartItems)
-            .filter((elm) => elm.quantity > 0)
-            .map((item, index) => (
-              <div className="summaryItems" key={index}>
-                <div><img src={item.image}/></div>
-                <div>{item.name}</div>
-                <div>{item.quantity}</div>
-                <div>{item.total}</div>
-              </div>
-            ))
-          : null
-        } */}
+        )
+        )}
       </div>
       <div className='totals' >  
         <ul>
