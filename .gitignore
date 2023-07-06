@@ -23,7 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 
-
 # Windows thumbnail cache files
 Thumbs.db
 Thumbs.db:encryptable
