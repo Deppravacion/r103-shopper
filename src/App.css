@@ -178,10 +178,10 @@ h1 {
 
 .summaryItems {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   border-bottom: 1px dashed grey;
-  margin: 5px 0px;
   align-items: center;
+  padding: 5px 15px;
 }
 
 .summaryItems > div > img {

@@ -7,7 +7,7 @@ import { CommerceService } from '../../lib/services'
 const comService = new CommerceService()
 export class StoreHome extends Component {
   state = {
-    displayPage: 'Cart', 
+    displayPage: 'Welcome', 
     currentUserIndex: 0,
     error: {},
     allUsers: ALLUSERS, 
@@ -15,12 +15,10 @@ export class StoreHome extends Component {
     hasPromo: false,
     payment: {},
     shipping: {},
-    // cartItems: CARTITEMS,  
-    cartItems: {},  
-
+    cartItems: {}, 
     data: [],
     loading: false, 
-    errorBool: false, //error in the api stuff, refacktor 
+    errorBool: false, 
   }
 
   async componentDidMount() {
@@ -28,14 +26,10 @@ export class StoreHome extends Component {
     comService.fetchProducts()
       .then((res) => {
         if (res && res.response.ok) {
-
           const transformedItems = {}
           res.data.forEach((item) => {
             transformedItems[item.name] = item
           })
-
-
-
           this.setState({
             data: res.data, 
             loading: false, 
@@ -52,30 +46,7 @@ export class StoreHome extends Component {
       })
     })
   }
-  //below is safe
-  // async componentDidMount() {
-  //   this.setState({loading: true})
-  //   comService.fetchProducts()
-  //     .then((res) => {
-  //       if (res && res.response.ok) {
-  //         this.setState({
-  //           data: res.data, 
-  //           loading: false, 
-  //           // cartItems: res.data,
-  //         })
-  //       } else {
-  //         this.setState({ loading: false})
-  //       }
-  //   }, (error) => {
-  //     console.log(error)
-  //     this.setState({
-  //       loading: false, 
-  //       errorBool: true,
-  //     })
-  //   })
-  // }
-
-
+ 
   changeState = (name, state, func) => {
     this.setState({
       [name]: state,
@@ -116,9 +87,7 @@ export class StoreHome extends Component {
   }
 
   changePromo = (state) =>    this.changeState('hasPromo', state, this.calculateTotal)
-
   changeExpressSpeed = (state) => this.changeState('hasExpressShipping', state, this.calculateTotal)   
-
   changeDisplayPage = (state) => this.changeState('displayPage', state) 
   changeCurrentuserIndex = (state) => this.changeState('currentUserIndex', state)
   addUser = (user) =>  {
