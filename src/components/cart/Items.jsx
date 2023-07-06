@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 export const Items = (props) => {
   const mainState = props.mainState
   const { allUsers } = props.mainState
@@ -8,14 +7,12 @@ export const Items = (props) => {
   const currentUser = allUsers[currentUserIndex]
   const { cartItems } = props.mainState
   const { cartItems: { bricks, mortar} } = props.mainState
-
+  const {errorBool} = props.mainState
   const handleQTY = (name, Val) => props.changeCartQuantity(name, 'quantity', Val)
   const proceed = () => props.goShipping()
 
   return(
     <>           
-   
-
       {Object.values(cartItems).length 
         ? Object.entries(cartItems).map(([key, value]) => (
           <div className="itemWrapper" key={key}>
@@ -37,9 +34,9 @@ export const Items = (props) => {
             </div>
           </div>
         ))
-        : null
+        : <div>Loading...</div>
       }
-
+      { errorBool && <h3>Error loading the jazzmasters...</h3>}
       <div className="container btnWrapper">
         <button 
           onClick={proceed} 

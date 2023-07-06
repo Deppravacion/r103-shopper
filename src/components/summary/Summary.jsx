@@ -4,14 +4,11 @@ import HARE from '../../assets/hare.png'
 import TURTLE from '../../assets/turtle.png'
 
 export const Summary = (props) => {
-
   const { allUsers } = props.mainState
   const { currentUserIndex } = props.mainState
   const currentUser = allUsers[currentUserIndex]
   const { cartItems } = props.mainState
   const { cartItems: { bricks, mortar} } = props.mainState
-  const summaryImage = props.hasExpressShipping ? HARE : TURTLE
-
   const handleDiscount = (e) => {    
     if ( e.target.value === '100off') {
       props.changePromo(true)
@@ -53,9 +50,10 @@ export const Summary = (props) => {
               <div>{cartItems[item].quantity}</div>
               <div>{cartItems[item].total}</div>
             </div>
-            : null
-        )
+            :null
+          )
         )}
+      
       </div>
       <div className='totals' >  
         <ul>
